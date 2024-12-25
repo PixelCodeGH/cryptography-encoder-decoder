@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoEncoderDecoder - Advanced Text Processing</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-lock"></i> CryptoEncoderDecoder</h1>
+            <p>Advanced Text Encoding, Decoding & Encryption Tools</p>
+            <nav>
+                <a href="custom.html" class="btn-secondary">
+                    <i class="fas fa-code"></i> Create Custom Methods
+                </a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="encryption-panel">
+                <div class="method-selector">
+                    <label for="encryption-method">Select Encryption Method:</label>
+                    <select id="encryption-method">
+                        <option value="caesar">Caesar Cipher</option>
+                        <option value="vigenere">Vigenère Cipher</option>
+                        <option value="rot13">ROT13</option>
+                        <option value="atbash">Atbash Cipher</option>
+                        <option value="railfence">Rail Fence Cipher</option>
+                        <option value="reverse">Reverse Cipher</option>
+                        <option value="aes">AES</option>
+                        <option value="base64">Base64</option>
+                        <option value="morse">Morse Code</option>
+                        <option value="binary">Binary</option>
+                        <option value="hex">Hexadecimal</option>
+                    </select>
+                </div>
+
+                <div class="key-input">
+                    <label for="encryption-key">Encryption Key:</label>
+                    <div class="key-wrapper">
+                        <input type="text" id="encryption-key" placeholder="Enter your encryption key">
+                        <button id="generate-key" class="btn-secondary">
+                            <i class="fas fa-key"></i> Generate
+                        </button>
+                    </div>
+                    <div id="key-strength" class="strength-meter hidden">
+                        <div class="meter-fill"></div>
+                        <span class="strength-text">Weak</span>
+                    </div>
+                </div>
+
+                <div class="text-areas">
+                    <div class="input-area">
+                        <label for="input-text">Input Text:</label>
+                        <textarea id="input-text" placeholder="Enter text to encrypt/decrypt"></textarea>
+                    </div>
+                    
+                    <div class="controls">
+                        <button id="encrypt" class="btn-primary">
+                            <i class="fas fa-lock"></i> Encrypt
+                        </button>
+                        <button id="swap" class="btn-secondary">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                        <button id="decrypt" class="btn-primary">
+                            <i class="fas fa-unlock"></i> Decrypt
+                        </button>
+                    </div>
+
+                    <div class="output-area">
+                        <label for="output-text">Output Text:</label>
+                        <textarea id="output-text" readonly></textarea>
+                        <button id="copy" class="btn-secondary">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-panel">
+                <h2>Method Information</h2>
+                <div id="method-info">
+                    <!-- Method info will be populated by JavaScript -->
+                </div>
+            </div>
+        </main>
+
+        <div id="notification" class="notification hidden">
+            <i class="fas fa-info-circle"></i>
+            <span>Notification message</span>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html> 

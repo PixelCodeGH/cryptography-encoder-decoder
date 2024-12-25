@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoEncoderDecoder - Custom Methods</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/custom-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-code"></i> Custom Methods Creator</h1>
+            <p>Create and test your own encoding and encryption methods</p>
+            <nav>
+                <a href="index.html" class="btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to Main Tools
+                </a>
+            </nav>
+        </header>
+
+        <main class="custom-main">
+            <div class="custom-panel">
+                <div class="quick-guide collapsed">
+                    <h2><i class="fas fa-book"></i> Quick Guide</h2>
+                    <div class="guide-content">
+                        <div class="guide-section">
+                            <h3>Finding Encryption Methods</h3>
+                            <ul>
+                                <li>Enter a description of what you want to do (e.g., "replace vowels with numbers")</li>
+                                <li>Or leave it empty to get random suggestions</li>
+                                <li>Click on any suggestion to load it into the editor</li>
+                            </ul>
+                        </div>
+                        <div class="guide-section">
+                            <h3>Creating Custom Methods</h3>
+                            <ul>
+                                <li>Give your method a descriptive name</li>
+                                <li>Explain how it works in the description</li>
+                                <li>Choose if it needs a key (e.g., a password or number)</li>
+                                <li>Write your encryption and decryption functions</li>
+                                <li>Test your method before saving</li>
+                            </ul>
+                        </div>
+                        <div class="guide-section">
+                            <h3>Function Guidelines</h3>
+                            <ul>
+                                <li>Functions must take <code>text</code> and <code>key</code> parameters</li>
+                                <li>Return the processed text as a string</li>
+                                <li>Avoid using unsafe functions (eval, Function, import, require)</li>
+                                <li>Make sure encryption and decryption are reversible</li>
+                            </ul>
+                        </div>
+                        <div class="guide-section">
+                            <h3>Example Function</h3>
+                            <pre><code>function encrypt(text, key) {
+    // Your encryption logic here
+    return processedText;
+}
+
+function decrypt(text, key) {
+    // Your decryption logic here
+    // Should reverse the encryption
+    return originalText;
+}</code></pre>
+                        </div>
+                    </div>
+                    <button class="btn-secondary" onclick="toggleGuide()">
+                        <i class="fas fa-chevron-down"></i> Show Guide
+                    </button>
+                </div>
+
+                <div class="prompt-section">
+                    <h2>Find Similar Methods</h2>
+                    <div class="form-group">
+                        <label for="user-prompt">Describe what you want to do:</label>
+                        <input type="text" id="user-prompt" placeholder="Enter description or leave empty for random suggestions">
+                        <button id="find-similar" class="btn-primary">
+                            <i class="fas fa-search"></i> Find Similar Methods
+                        </button>
+                    </div>
+                    <div id="suggestions" class="suggestions hidden">
+                        <!-- Suggestions will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="method-creator">
+                    <h2>Create New Method</h2>
+                    <form id="method-form">
+                        <div class="form-group">
+                            <label for="method-name">Method Name:</label>
+                            <input type="text" id="method-name" required placeholder="e.g., My Custom Cipher">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="method-description">Description:</label>
+                            <textarea id="method-description" required placeholder="Explain how your encryption method works..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="requires-key">Requires Key:</label>
+                            <select id="requires-key">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="key-type">Key Type:</label>
+                            <select id="key-type">
+                                <option value="number">Number</option>
+                                <option value="text">Text</option>
+                                <option value="none">No Key Required</option>
+                            </select>
+                        </div>
+
+                        <div class="code-editor">
+                            <div class="form-group">
+                                <label for="encrypt-function">Encryption Function:</label>
+                                <textarea id="encrypt-function" class="code" required placeholder="// Write your encryption function here
+function encrypt(text, key) {
+    // Your encryption logic here
+    return encryptedText;
+}"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="decrypt-function">Decryption Function:</label>
+                                <textarea id="decrypt-function" class="code" required placeholder="// Write your decryption function here
+function decrypt(text, key) {
+    // Your decryption logic here
+    return decryptedText;
+}"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="test-section">
+                            <h3>Test Your Method</h3>
+                            <div class="form-group">
+                                <label for="test-input">Test Input:</label>
+                                <input type="text" id="test-input" placeholder="Enter text to test">
+                            </div>
+                            <div class="form-group" id="test-key-group">
+                                <label for="test-key">Test Key:</label>
+                                <input type="text" id="test-key" placeholder="Enter key to test">
+                            </div>
+                            <div class="test-buttons">
+                                <button type="button" id="test-encrypt" class="btn-primary">
+                                    <i class="fas fa-lock"></i> Test Encrypt
+                                </button>
+                                <button type="button" id="test-decrypt" class="btn-primary">
+                                    <i class="fas fa-unlock"></i> Test Decrypt
+                                </button>
+                            </div>
+                            <div class="form-group">
+                                <label for="test-output">Test Output:</label>
+                                <input type="text" id="test-output" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-save"></i> Save Method
+                            </button>
+                            <button type="button" id="get-code" class="btn-secondary">
+                                <i class="fas fa-code"></i> Get Code
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="saved-methods">
+                    <h2>Saved Methods</h2>
+                    <div id="methods-list">
+                        <!-- Saved methods will be listed here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-panel hidden" id="code-display">
+                <h2>Implementation Code</h2>
+                <pre><code id="implementation-code"></code></pre>
+                <button id="copy-code" class="btn-secondary">
+                    <i class="fas fa-copy"></i> Copy Code
+                </button>
+            </div>
+        </main>
+
+        <div id="notification" class="notification hidden">
+            <i class="fas fa-info-circle"></i>
+            <span>Notification message</span>
+        </div>
+    </div>
+
+    <script src="js/custom-examples.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html> 

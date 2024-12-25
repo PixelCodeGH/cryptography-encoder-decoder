@@ -1,0 +1,391 @@
+:root {
+    --primary-color: #6366f1;
+    --secondary-color: #818cf8;
+    --background-color: #0f172a;
+    --surface-color: #1e293b;
+    --text-color: #f8fafc;
+    --text-secondary: #94a3b8;
+    --success-color: #22c55e;
+    --error-color: #ef4444;
+    --warning-color: #f59e0b;
+    --transition-speed: 0.3s;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Add animations for elements appearing */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Apply animations to elements */
+.container {
+    animation: fadeIn 0.5s ease-out;
+}
+
+header {
+    animation: slideIn 0.5s ease-out;
+}
+
+.btn-primary, .btn-secondary {
+    transition: all var(--transition-speed) ease;
+}
+
+input, select, textarea {
+    transition: border-color var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease;
+}
+
+.notification {
+    animation: slideIn 0.3s ease-out;
+    transition: transform var(--transition-speed) ease,
+                opacity var(--transition-speed) ease,
+                background-color var(--transition-speed) ease;
+}
+
+body {
+    background: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+header nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+header nav .btn-secondary {
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+header nav .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+select, input[type="text"], textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    color: var(--text-color);
+    font-size: 1rem;
+    width: 100%;
+}
+
+select {
+    width: auto;
+}
+
+textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.btn-primary, .btn-secondary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.key-container {
+    flex: 1;
+}
+
+.input-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.key-strength {
+    margin-top: 0.5rem;
+}
+
+.meter {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.meter-fill {
+    height: 100%;
+    background: var(--success-color);
+    transition: width 0.3s ease;
+}
+
+.strength-text {
+    position: absolute;
+    right: 0;
+    top: -1.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.info-panel {
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding-left: 2rem;
+}
+
+.info-panel h2 {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.method-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.security-info {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.security-level, .key-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.level-indicator {
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.level-indicator.low {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.level-indicator.medium {
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+}
+
+.level-indicator.high {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+}
+
+.notification {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--success-color);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.notification.hidden {
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    .info-panel {
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-left: 0;
+        padding-top: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.method-selector {
+    margin-bottom: 2rem;
+}
+
+.method-selector select {
+    width: 100%;
+    margin-top: 0.5rem;
+    background-color: var(--surface-color);
+    color: var(--text-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.5em;
+}
+
+.method-selector select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.method-selector select option {
+    background-color: var(--surface-color);
+    color: var(--text-color);
+    padding: 0.5rem;
+}
+
+.key-input {
+    margin-bottom: 2rem;
+}
+
+.key-wrapper {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.text-areas {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.input-area, .output-area {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+textarea {
+    min-height: 150px;
+    resize: vertical;
+} 
