@@ -1,6 +1,6 @@
-# CryptoEncoderDecoder
+# CryptographyEncoderDecoder
 
-A modern web-based toolkit for encoding, decoding, and encrypting text with support for multiple encryption methods and custom implementations.
+A modern web-based toolkit for encoding, decoding, and encrypting text with support for multiple cryptographic methods and custom implementations.
 
 ## Features
 
@@ -18,7 +18,7 @@ A modern web-based toolkit for encoding, decoding, and encrypting text with supp
 - Hexadecimal Conversion
 
 ### Custom Tools
-- Create your own encryption methods
+- Create your own cryptographic methods
 - Test encoding/decoding in real-time
 - Save custom methods for later use
 - Generate implementation code
@@ -26,7 +26,7 @@ A modern web-based toolkit for encoding, decoding, and encrypting text with supp
 
 ## Project Structure
 ```
-crypto-encoder-decoder/
+cryptography-encoder-decoder/
 ├── css/
 │   ├── style.css          # Main stylesheet
 │   └── custom-style.css   # Custom methods page styles
